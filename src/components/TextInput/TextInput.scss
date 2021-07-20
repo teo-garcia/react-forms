@@ -1,0 +1,52 @@
+label {
+  display: flex;
+  flex-flow: column;
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  margin-bottom: 32px;
+  width: 250px;
+  font-family: var(--font-two);
+  font-weight: var(--font-weight-two);
+  position: relative;
+
+  &:last-of-type {
+    margin-bottom: 48px;
+  }
+
+  @media (min-width: 768px) {
+    width: 216px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 250px;
+  } 
+
+  input {
+    margin-top: 2px;
+    border: 0;
+    border-radius: 8px;
+    color: var(--color-text);
+    padding: 4px 8px;
+    border: 2px solid var(--color-three);
+    transition: border-color 300ms ease-in;
+
+    &:focus {
+      border-color: var(--color-two);
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-top: 4px;
+    margin-left: 4px;
+    color: var(--color-two);
+    text-transform: none;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(130%);
+
+    span {
+      margin-left: 4px;
+    }
+  }
+}

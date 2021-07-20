@@ -1,0 +1,25 @@
+header {
+  grid-area: header;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(190deg, var(--color-one), var(--color-two));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    color: var(--color-background);
+    font-size: 2.6rem;
+    width: 200px;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      width: 100%;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 4rem;
+    }
+  }
+
+}

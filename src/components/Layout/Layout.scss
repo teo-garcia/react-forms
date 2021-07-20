@@ -1,0 +1,21 @@
+main {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 1fr 1fr 1fr;
+  grid-template-areas: "header" "formik" "hook-form";
+  justify-items: center;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 100px 1fr;
+    grid-template-areas: "header header header" "formik . .";
+  }
+}
+
+section {
+  &:first-of-type {
+    grid-area: formik
+  }
+}
