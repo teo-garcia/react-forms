@@ -1,5 +1,6 @@
-import { render, fireEvent, screen } from '@testing-library/react';
 import * as React from 'react';
+import userEvent from '@testing-library/user-event';
+import { render, screen, act, waitFor } from '@testing-library/react';
 import { FormFormik } from './FormFormik';
 
 describe('<FormFormik /> tests', function () {
@@ -83,9 +84,21 @@ describe('<FormFormik /> tests', function () {
 `);
   });
 
-  test('It should validate empty touched fields', function () {
+  test('It should validate empty touched fields', async function () {
     render(<FormFormik />);
-    const field = screen.getAllByLabelText(/name/i).length;
-    console.log(field);
+    const nameField = screen.getByRole('textbox', { name: /^name/i });
+    const lastNameField = screen.getByRole('textbox', { name: /^last name/i });
+    const emailField = screen.getByRole('textbox', { name: /^email/i });
+
+    await waitFor(() => {
+      userEvent.click(nameField);
+      userEvent.tab();
+      userEvent.tab();
+      userEvent.tab();
+    });
+
+    expect(nameField).toHaveErrorMessage('Name is required⚠️');
+    expect(lastNameField).toHaveErrorMessage('Last name is required⚠️');
+    expect(emailField).toHaveErrorMessage('Email is not valid⚠️');
   });
 });
